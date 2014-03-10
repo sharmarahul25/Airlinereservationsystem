@@ -1,0 +1,26 @@
+delimiter |
+create trigger first
+after delete on confirm
+for each row
+begin
+insert into cancelled (flightno,seatno,date) values(old.flightno,old.seatno,old.date);
+end;
+|
+delimiter ;
+
+
+
+
+
+delimiter |
+create trigger second
+after insert  on login
+for each row
+begin
+insert into account (userid,balance) values(new.userid,1500);
+end;
+|
+delimiter ;
+
+
+
